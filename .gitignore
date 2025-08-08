@@ -1,0 +1,23 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ortam/Config
+.env
+*.env
+*.pem
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Log / tmp
+*.log
+*.sqlite*
+*.db
+tmp/

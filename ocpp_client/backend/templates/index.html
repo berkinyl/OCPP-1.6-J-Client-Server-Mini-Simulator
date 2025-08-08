@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <title>VESTEL EVC Control Panel - Elite Dark Blue</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(180deg, #0a1f44 0%, #05122d 100%);
+      color: #d6e4ff;
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    h2 {
+      font-weight: 700;
+      color: #b3c7ff;
+      text-shadow: 0 0 5px #2a4b8d;
+    }
+    .card {
+      background: linear-gradient(135deg, #1f3461 0%, #16264b 100%);
+      border-radius: 15px;
+      border: 1px solid #294674;
+      box-shadow: 0 8px 20px rgba(20, 40, 90, 0.7);
+      transition: transform 0.3s ease;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(30, 60, 120, 0.9);
+    }
+    .card-header {
+      font-weight: 700;
+      font-size: 1.5rem;
+      border-radius: 15px 15px 0 0;
+      background: linear-gradient(90deg, #2e4b8f, #3d5cc6);
+      color: #e2eaff;
+      box-shadow: 0 3px 10px #1e357f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+    .status-badge {
+      font-size: 1.1rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 0 5px #4a74e8;
+      user-select: none;
+      background: linear-gradient(135deg, #4a74e8, #1f3ecc);
+      box-shadow: 0 2px 8px rgba(74,116,232,0.9);
+    }
+    .card-body {
+      padding: 1.5rem;
+      color: #b0c4ff;
+      font-size: 1.1rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .btn-group button {
+      flex-grow: 1;
+      min-width: 110px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.5rem 0;
+      color: #e2eaff;
+      background: linear-gradient(135deg, #3d5cc6, #2e4b8f);
+      border: none;
+      box-shadow: 0 4px 10px rgba(30, 60, 120, 0.9);
+      transition: background-color 0.3s ease;
+    }
+    .btn-group button:hover {
+      background: linear-gradient(135deg, #5a78e8, #4a63d4);
+      color: #fff;
+      box-shadow: 0 6px 15px rgba(80, 100, 230, 1);
+      cursor: pointer;
+    }
+    .btn-success { background: #4a74e8; }
+    .btn-warning { background: #6b84d1; }
+    .btn-secondary { background: #3a5083; }
+    .btn-danger { background: #2a3a6b; }
+  </style>
+</head>
+<body>
+
+<div class="container py-5">
+  <h2 class="mb-5 text-center">🔌 <span style="color:#adc6ff;">VESTEL EVC</span> Control Panel</h2>
+  
+  <div id="statusRow" class="row g-4 justify-content-center"></div>
+</div>
+
+<script>
+const apiBase = "/api";
+
+const statusBadgeColors = {
+  "Available": "bg-primary",
+  "Preparing": "bg-warning text-dark",
+  "Charging": "bg-info",
+  "SuspendedEV": "bg-secondary",
+  "SuspendedEVSE": "bg-dark text-light",
+  "Finishing": "bg-light text-dark"
+};
+
+function getButtonsForStatus(status, connectorId) {
+  switch(status) {
+    case "Available":
+      return `<button class="btn btn-success" onclick="sendCommand(${connectorId}, 'start')">Start</button>`;
+    case "Preparing":
+      return `<span class="text-muted fst-italic">Preparing...</span>`;
+    case "Charging":
+      return `
+        <button class="btn btn-warning" onclick="sendCommand(${connectorId}, 'suspend')">Suspend</button>
+        <button class="btn btn-danger" onclick="sendCommand(${connectorId}, 'stop')">Stop</button>`;
+    case "SuspendedEV":
+    case "SuspendedEVSE":
+      return `
+        <button class="btn btn-secondary" onclick="sendCommand(${connectorId}, 'resume')">Resume</button>
+        <button class="btn btn-danger" onclick="sendCommand(${connectorId}, 'stop')">Stop</button>`;
+    case "Finishing":
+      return `<span class="text-muted fst-italic">Finishing...</span>`;
+    default:
+      return `<button class="btn btn-outline-light" onclick="sendCommand(${connectorId}, 'start')">Start</button>`;
+  }
+}
+
+async function fetchStatus() {
+  try {
+    const res = await axios.get(`${apiBase}/status`);
+    const data = res.data;
+
+    const container = document.getElementById("statusRow");
+    container.innerHTML = "";
+
+    for (const connectorId in data.connectors) {
+      const conn = data.connectors[connectorId];
+      const status = conn.status;
+      const badgeClass = statusBadgeColors[status] || "bg-secondary";
+
+      const cardHtml = `
+        <div class="col-12 col-md-5 col-lg-4">
+          <div class="card border-0">
+            <div class="card-header d-flex justify-content-between align-items-center" style="background: linear-gradient(90deg, #2e4b8f, #3d5cc6); border-radius: 15px 15px 0 0; color: #e2eaff; font-weight: 700; font-size: 1.5rem; box-shadow: 0 3px 10px #1e357f;">
+              <div>🔌 Connector ${conn.connector_id}</div>
+              <div class="status-badge ${badgeClass}">${status}</div>
+            </div>
+            <div class="card-body">
+              <p><strong>Session Active:</strong> ${conn.session_active}</p>
+              <div class="btn-group">
+                ${getButtonsForStatus(status, conn.connector_id)}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      container.innerHTML += cardHtml;
+    }
+  } catch (error) {
+    console.error("Error fetching status:", error);
+  }
+}
+
+async function sendCommand(connectorId, action) {
+  try {
+    await axios.post(`${apiBase}/connectors/${connectorId}/${action}`);
+    await fetchStatus();
+  } catch (err) {
+    alert("Error: " + (err.response?.data?.detail || err.message));
+  }
+}
+
+fetchStatus();
+setInterval(fetchStatus, 5000);
+</script>
+
+</body>
+</html>
