@@ -5,6 +5,10 @@ import websockets
 from datetime import datetime
 from pathlib import Path
 import ssl
+import aiohttp
+import os
+
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,7 +22,52 @@ class MockOCPPServer:
         self.use_ssl = use_ssl
         self.logger = logging.getLogger("MockOCPPServer")
         self.connected_clients = {}
-        
+        self.rest_base = os.environ.get("REST_API_BASE", "http://localhost:3000")
+
+    async def _post_to_rest(self, endpoint: str, payload: dict):
+        url = f"{self.rest_base.rstrip('/')}/{endpoint.lstrip('/')}"
+        try:
+            timeout = aiohttp.ClientTimeout(total=5)
+            async with aiohttp.ClientSession(timeout=timeout) as session:
+                async with session.post(url, json=payload) as resp:
+                    text = await resp.text()
+                    if resp.status >= 400:
+                        self.logger.error(f"[REST] {endpoint} -> {resp.status} {text}")
+                    else:
+                        self.logger.info(f"[REST] OK {endpoint} -> {resp.status}")
+        except Exception as e:
+            self.logger.error(f"[REST] POST {endpoint} failed: {e}")   
+            
+    async def _log_action_to_rest(self, action: str, payload: dict):
+        if action == "BootNotification":
+            await self._post_to_rest("/bootnotification", {
+                "chargePointVendor": payload.get("chargePointVendor"),
+                "chargePointModel": payload.get("chargePointModel"),
+                "chargePointSerialNumber": payload.get("chargePointSerialNumber"),
+                "chargeBoxSerialNumber": payload.get("chargeBoxSerialNumber"),
+                "firmwareVersion": payload.get("firmwareVersion"),
+                "iccid": payload.get("iccid"),
+                "imsi": payload.get("imsi"),
+                "meterType": payload.get("meterType"),
+                "meterSerialNumber": payload.get("meterSerialNumber"),
+            })
+
+        elif action == "Heartbeat":
+            await self._post_to_rest("/heartbeat", {})
+
+        elif action == "StatusNotification":
+            await self._post_to_rest("/status-notification", {
+                "connectorId": payload.get("connectorId"),
+                "status": payload.get("status"),
+                "errorCode": payload.get("errorCode"),
+                "info": payload.get("info"),
+                "timestamp": payload.get("timestamp"),
+                "vendorId": payload.get("vendorId"),
+                "vendorErrorCode": payload.get("vendorErrorCode"),
+            })
+        else:
+            self.logger.debug(f"[REST] No route mapped for action: {action}")
+
     async def start(self):
         protocol = "wss" if self.use_ssl else "ws"
         self.logger.info(f"Starting mock OCPP server on {protocol}://{self.host}:{self.port}")
@@ -75,6 +124,8 @@ class MockOCPPServer:
                 
                 await websocket.send(json.dumps(response_message))
                 self.logger.info(f"[{charge_point_id}] Sent response: {response}")
+                asyncio.create_task(self._log_action_to_rest(action, payload))
+
                 
         except Exception as e:
             self.logger.error(f"Error processing message from {charge_point_id}: {e}")

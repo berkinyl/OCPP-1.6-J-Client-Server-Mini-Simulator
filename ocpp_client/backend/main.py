@@ -69,8 +69,8 @@ if __name__ == "__main__":
 
     uvicorn.run(
         "ocpp_client.backend.main:app",
-        host="0.0.0.0",
-        port=3000,
+        host="127.0.0.1",
+        port=8000,
         ssl_keyfile=os.path.join(BASE_DIR, "key.pem"),
         ssl_certfile=os.path.join(BASE_DIR, "cert.pem"),
         reload=False

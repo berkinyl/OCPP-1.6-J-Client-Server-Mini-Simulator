@@ -23,6 +23,7 @@ class OCPPClient:
         self.connected = False
         self.heartbeat_task = None
         self.last_heartbeat = None
+        self.last_message_time = datetime.now()
         
     async def start(self):
         while True:
@@ -103,10 +104,14 @@ class OCPPClient:
         try:
             await self.websocket.send(json.dumps(message))
             self.logger.debug(f"Sent {action}: {payload}")
+            
+            self.last_message_time = datetime.now()
+            
             return message_id
         except Exception as e:
             self.logger.error(f"Failed to send {action}: {e}")
             return None
+
             
     async def send_boot_notification(self):
         payload = self.templates.boot_notification()
@@ -138,8 +143,15 @@ class OCPPClient:
     async def heartbeat_loop(self):
         while self.connected:
             try:
-                await asyncio.sleep(self.heartbeat_interval)
-                await self.send_heartbeat()
+                elapsed = (datetime.now() - self.last_message_time).total_seconds()
+                wait_time = self.heartbeat_interval - elapsed
+                
+                if wait_time > 0:
+                    await asyncio.sleep(wait_time)
+                
+                if (datetime.now() - self.last_message_time).total_seconds() >= self.heartbeat_interval:
+                    await self.send_heartbeat()
+                    self.last_message_time = datetime.now()
             except asyncio.CancelledError:
                 break
             except Exception as e:
