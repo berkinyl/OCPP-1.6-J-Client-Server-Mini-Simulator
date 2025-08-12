@@ -1,0 +1,138 @@
+<!-- sim_manager/templates/index.html -->
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sim-Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand">Sim-Manager</span>
+    <span class="navbar-text ms-2 small text-secondary">Client Orchestrator</span>
+  </div>
+</nav>
+
+<main class="container py-4">
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header fw-semibold">Yeni Client’lar</div>
+        <div class="card-body">
+          <form id="spawn-form" class="vstack gap-3">
+            <div class="form-floating">
+              <input id="server_url" class="form-control" placeholder="wss://localhost:8080" value="wss://localhost:8080">
+              <label for="server_url">Server URL (ws:// veya wss://)</label>
+            </div>
+
+            <div class="form-floating">
+              <input id="base_port" type="number" class="form-control" placeholder="8101" value="8101" min="1" step="1">
+              <label for="base_port">Başlangıç Portu (UI)</label>
+            </div>
+
+            <div class="form-floating">
+              <input id="city" class="form-control" placeholder="Izmir">
+              <label for="city">Şehir (opsiyonel)</label>
+            </div>
+
+            <ul class="nav nav-tabs" id="spawnTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="tab-prefix" data-bs-toggle="tab" data-bs-target="#pane-prefix" type="button" role="tab">Prefix + Count</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="tab-ids" data-bs-toggle="tab" data-bs-target="#pane-ids" type="button" role="tab">ID Listesi</button>
+              </li>
+            </ul>
+            <div class="tab-content border rounded-bottom p-3">
+              <div class="tab-pane fade show active" id="pane-prefix" role="tabpanel">
+                <div class="row g-2">
+                  <div class="col-7">
+                    <div class="form-floating">
+                      <input id="prefix" class="form-control" placeholder="CP-IZMIR" value="CP-IZMIR">
+                      <label for="prefix">Prefix</label>
+                    </div>
+                  </div>
+                  <div class="col-5">
+                    <div class="form-floating">
+                      <input id="count" type="number" class="form-control" placeholder="3" value="3" min="1" step="1">
+                      <label for="count">Count</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-floating mt-2">
+                  <input id="start_index" type="number" class="form-control" placeholder="1" value="1" min="1" step="1">
+                  <label for="start_index">Start Index</label>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pane-ids" role="tabpanel">
+                <div class="form-floating">
+                  <textarea id="ids" class="form-control" style="height: 140px" placeholder="CP-AYDIN-001&#10;CP-DENIZLI-002"></textarea>
+                  <label for="ids">ID’leri satır satır yazın</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="ui" checked>
+              <label class="form-check-label" for="ui">UI’li Client (önerilir)</label>
+            </div>
+
+            <div class="d-grid">
+              <button class="btn btn-primary" type="submit">Spawn</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card shadow-sm mt-4">
+        <div class="card-body small text-muted">
+          <div>Health: <span id="health-text">–</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card shadow-sm">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span class="fw-semibold">Client’lar</span>
+          <div class="d-flex gap-2">
+            <button id="refresh-btn" class="btn btn-outline-secondary btn-sm">Yenile</button>
+            <button id="kill-all-btn" class="btn btn-outline-danger btn-sm">Kill All</button>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0" id="clients-table">
+            <thead class="table-light">
+              <tr>
+                <th>CP ID</th>
+                <th>PID</th>
+                <th>Şehir</th>
+                <th>UI</th>
+                <th style="width: 140px">İşlem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS dolduracak -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="toast" class="toast align-items-center text-bg-primary border-0 position-fixed bottom-0 end-0 m-3" role="alert">
+        <div class="d-flex">
+          <div class="toast-body" id="toast-body">İşlem başarılı</div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/app.js"></script>
+</body>
+</html>

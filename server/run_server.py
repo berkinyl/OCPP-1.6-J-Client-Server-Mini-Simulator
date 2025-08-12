@@ -9,7 +9,7 @@ def main():
     print("⚡ Press Ctrl+C to stop\n")
     
     try:
-        subprocess.run([sys.executable, "mock_server.py"], check=True)
+        subprocess.run([sys.executable, "server.py"], check=True)
     except KeyboardInterrupt:
         print("\n🛑 Server stopped")
     except Exception as e:
