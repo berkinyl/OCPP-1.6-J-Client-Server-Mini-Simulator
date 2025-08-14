@@ -14,6 +14,9 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
+ALLOWED_CP_IDS = ["VESTEL-EVC-001","VESTEL-EVC-002","VESTEL-EVC-003","VESTEL-EVC-004","VESTEL-EVC-005","VESTEL-EVC-006","VESTEL-EVC-007","VESTEL-EVC-008"]
+
+
 class MockOCPPServer:
     def __init__(self, host="localhost", port=8080, use_ssl=True):
         self.host = host
@@ -29,29 +32,31 @@ class MockOCPPServer:
         REST'e POST. payload, cpId'yi de içeren zarf (OrderedDict) olmalı.
         """
         url = f"{self.rest_base.rstrip('/')}/{endpoint.lstrip('/')}"
+        self.logger.info(f"[REST] POST payload to {endpoint}: {payload}")  # <- payload logu
         try:
             timeout = aiohttp.ClientTimeout(total=5)
             async with aiohttp.ClientSession(timeout=timeout) as session:
-                
-                self.logger.info(f"[REST] → {endpoint} payload: {json.dumps(payload, ensure_ascii=False)}")
-                
                 async with session.post(url, json=payload) as resp:
                     text = await resp.text()
                     if resp.status >= 400:
-                        self.logger.error(f"[REST] {endpoint} -> {resp.status} {text}")
+                        try:
+                            error_json = await resp.json()
+                            self.logger.error(f"[REST] {endpoint} -> {resp.status} {error_json}")
+                        except Exception:
+                            self.logger.error(f"[REST] {endpoint} -> {resp.status} {text}")
                     else:
                         self.logger.info(f"[REST] OK {endpoint} -> {resp.status}")
         except Exception as e:
             self.logger.error(f"[REST] POST {endpoint} failed: {e}")
 
+
     async def _log_action_to_rest(self, cp_id: str, action: str, payload: dict):
         """
-        OCPP şemasına dokunmadan, REST'e giderken cpId kolonu eklenir.
-        Her endpoint'e gönderilen JSON'un EN BAŞINA cpId konur (OrderedDict).
+        OCPP şemasına dokunmadan, REST'e giderken cpId / clientId eklenir.
+        REST tarafındaki model formatına göre payload hazırlanır.
         """
         if action == "BootNotification":
             body = OrderedDict([
-                ("cpId", cp_id),
                 ("chargePointVendor",       payload.get("chargePointVendor")),
                 ("chargePointModel",        payload.get("chargePointModel")),
                 ("chargePointSerialNumber", payload.get("chargePointSerialNumber")),
@@ -61,31 +66,31 @@ class MockOCPPServer:
                 ("imsi",                    payload.get("imsi")),
                 ("meterType",               payload.get("meterType")),
                 ("meterSerialNumber",       payload.get("meterSerialNumber")),
+                ("clientId",                cp_id),  # REST modeli bunu bekliyor
             ])
             await self._post_to_rest("/bootnotification", body)
 
         elif action == "Heartbeat":
             body = OrderedDict([
-                ("cpId", cp_id),
-                ("currentTime", payload.get("currentTime")),  # genelde boş gönderiyordun; istersen bırak
+                ("createdAt",               payload.get("currentTime")),  # REST modeli DateTime bekliyor
+                ("clientId",                cp_id),
             ])
             await self._post_to_rest("/heartbeat", body)
 
         elif action == "StatusNotification":
             body = OrderedDict([
-                ("cpId", cp_id),
-                ("connectorId",     payload.get("connectorId")),
-                ("status",          payload.get("status")),
-                ("errorCode",       payload.get("errorCode")),
-                ("info",            payload.get("info")),
-                ("timestamp",       payload.get("timestamp")),
-                ("vendorId",        payload.get("vendorId")),
-                ("vendorErrorCode", payload.get("vendorErrorCode")),
+                ("connectorId",             payload.get("connectorId")),
+                ("status",                  payload.get("status")),
+                ("errorCode",               payload.get("errorCode")),
+                ("info",                    payload.get("info")),
+                ("timestamp",               payload.get("timestamp")),
+                ("vendorId",                payload.get("vendorId")),
+                ("vendorErrorCode",         payload.get("vendorErrorCode")),
+                ("clientId",                cp_id),  # REST modeli bunu bekliyor
             ])
             await self._post_to_rest("/status-notification", body)
 
         else:
-            # Diğer action'lar için forward yapmıyorsan logla ve geç
             self.logger.debug(f"[REST] No route mapped for action: {action}")
 
     async def start(self):
@@ -113,10 +118,16 @@ class MockOCPPServer:
             await asyncio.Future()  # Run forever
 
     async def handle_client(self, websocket, path):
-        # <<< CP_ID burada URL path'inden alınır
-        charge_point_id = path.strip('/')
+        charge_point_id = path.strip('/')  # cp_id'yi URL'den alıyoruz
         client_addr = websocket.remote_address
 
+        # Bağlantıyı kabul etmeden önce cp_id kontrolü yapalım
+        # handle_client metodunda, bağlantı reddedildiğinde:
+        if charge_point_id not in ALLOWED_CP_IDS:
+            await websocket.close(code=1008, reason="Charge point not authorized")  # 1008: Policy Violation
+            self.logger.warning(f"❌ Connection REJECTED: {charge_point_id} is NOT in allowed list")
+            return
+        
         self.logger.info(f"Client connected: {charge_point_id} from {client_addr}")
         self.connected_clients[charge_point_id] = websocket
 
@@ -128,6 +139,7 @@ class MockOCPPServer:
         finally:
             self.connected_clients.pop(charge_point_id, None)
 
+            
     async def handle_message(self, websocket, charge_point_id, raw_message):
         try:
             message = json.loads(raw_message)

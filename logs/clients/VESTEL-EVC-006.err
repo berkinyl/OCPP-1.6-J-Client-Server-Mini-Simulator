@@ -1,0 +1,442 @@
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [19202]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-006 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+INFO:     Heartbeat interval updated: 60s -> 60s
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8106 (Press CTRL+C to quit)
+INFO:     StatusNotification sent: Connector 1 -> Available
+INFO:     StatusNotification sent: Connector 2 -> Available
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [20040]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-006 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+INFO:     Heartbeat interval updated: 60s -> 60s
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8106 (Press CTRL+C to quit)
+INFO:     StatusNotification sent: Connector 1 -> Available
+INFO:     StatusNotification sent: Connector 2 -> Available
+WARNING:  Connection closed
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [21837]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-006 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+INFO:     Heartbeat interval updated: 60s -> 60s
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8106 (Press CTRL+C to quit)
+INFO:     StatusNotification sent: Connector 1 -> Available
+INFO:     StatusNotification sent: Connector 2 -> Available
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+WARNING:  Connection closed
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [23781]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-006 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+INFO:     Heartbeat interval updated: 60s -> 60s
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8106 (Press CTRL+C to quit)
+INFO:     StatusNotification sent: Connector 1 -> Available
+INFO:     StatusNotification sent: Connector 2 -> Available
+INFO:     Heartbeat sent
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23781]
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [27799]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-006 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+INFO:     Heartbeat interval updated: 60s -> 60s
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8106 (Press CTRL+C to quit)
+INFO:     StatusNotification sent: Connector 1 -> Available
+INFO:     StatusNotification sent: Connector 2 -> Available
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+WARNING:  Connection closed
+INFO:     Shutting down
+INFO:     Finished server process [27799]
+/home/yaman/Masaüstü/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/yaman/Masaüstü/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [13904]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-006 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+INFO:     Heartbeat interval updated: 60s -> 60s
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8106 (Press CTRL+C to quit)
+INFO:     StatusNotification sent: Connector 1 -> Available
+INFO:     StatusNotification sent: Connector 2 -> Available
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+WARNING:  Connection closed
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [13904]
+/home/yaman/Masaüstü/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/yaman/Masaüstü/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [29662]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-006 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+INFO:     Heartbeat interval updated: 60s -> 60s
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8106 (Press CTRL+C to quit)
+INFO:     StatusNotification sent: Connector 1 -> Available
+INFO:     StatusNotification sent: Connector 2 -> Available
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+INFO:     Heartbeat sent
+WARNING:  Connection closed
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [29662]

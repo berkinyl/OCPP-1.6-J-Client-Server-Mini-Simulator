@@ -8,8 +8,13 @@ class MessageTemplates:
         return {
             "chargePointVendor": CLIENT_CONFIG["charge_point_vendor"],
             "chargePointModel": CLIENT_CONFIG["charge_point_model"],
-            "firmwareVersion": CLIENT_CONFIG["firmware_version"],
-            "chargePointSerialNumber": CLIENT_CONFIG["serial_number"]
+            "chargePointSerialNumber": CLIENT_CONFIG.get("charge_point_serial_number"),
+            "chargeBoxSerialNumber": CLIENT_CONFIG.get("charge_box_serial_number"),
+            "firmwareVersion": CLIENT_CONFIG.get("firmware_version"),
+            "iccid": CLIENT_CONFIG.get("iccid"),
+            "imsi": CLIENT_CONFIG.get("imsi"),
+            "meterType": CLIENT_CONFIG.get("meter_type"),
+            "meterSerialNumber": CLIENT_CONFIG.get("meter_serial_number")
         }
     
     @staticmethod

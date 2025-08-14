@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Depends
-from models import ConnectorStatus, SystemStatus
+from ocpp_client.backend.models import ConnectorStatus, SystemStatus
 from ocpp_client.backend.dependencies import get_ocpp_client
 import logging
-
+from ocpp_client.backend.api.websocket import websocket_manager
 router = APIRouter()
 logger = logging.getLogger("API")
 

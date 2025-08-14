@@ -1,0 +1,22 @@
+{
+  "server_url": "wss://localhost:8080",
+  "charge_point_id": "VESTEL-EVC-005",
+  "charge_point_vendor": "Vestel",
+  "charge_point_model": "AC22kW",
+  "charge_point_serial_number": "VST-20C6408B",
+  "charge_box_serial_number": "BOX-EA7B6525",
+  "firmware_version": "1.2.3",
+  "iccid": "89860020c6408bea7b65",
+  "imsi": "2860120c6408bea",
+  "meter_type": "AC",
+  "meter_serial_number": "MTR-D40F4DA2",
+  "default_heartbeat_interval": 60,
+  "connector_count": 2,
+  "simulation": {
+    "charging_duration_min": 30,
+    "charging_duration_max": 120,
+    "idle_duration_min": 60,
+    "idle_duration_max": 300,
+    "status_change_probability": 0.15
+  }
+}

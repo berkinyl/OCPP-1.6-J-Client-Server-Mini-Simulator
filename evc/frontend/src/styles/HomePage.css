@@ -1,0 +1,53 @@
+/* Navbar container */
+.navbar {
+  position: fixed; /* stays at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px; /* fixed height */
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+/* Navigation links */
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: #76b5c5;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration:underline;
+}
+
+/* Main content offset to avoid overlap with navbar */
+.main-content {
+  padding: 80px 20px 20px; /* top padding accounts for navbar height */
+  background-color: #f5f5f5;
+  border: 3px solid #282c34;
+  border-radius: 15px;
+}
+
+.boing-image {
+  transition: transform 0.2s;
+}
+
+.boing-image:hover {
+  animation: boing 0.4s ease;
+}
+
+@keyframes boing {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.2) rotate(5deg); }
+  50%  { transform: scale(0.9) rotate(-5deg); }
+  70%  { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1); }
+}

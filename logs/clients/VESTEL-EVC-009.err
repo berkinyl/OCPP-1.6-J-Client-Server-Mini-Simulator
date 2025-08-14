@@ -1,0 +1,142 @@
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [19205]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-009 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+WARNING:  Connection closed
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8109 (Press CTRL+C to quit)
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [20043]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-009 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+WARNING:  Connection closed
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8109 (Press CTRL+C to quit)
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [21840]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-009 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+WARNING:  Connection closed
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8109 (Press CTRL+C to quit)
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [23784]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-009 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+WARNING:  Connection closed
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8109 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [23784]
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/sla/Desktop/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [27802]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-009 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+WARNING:  Connection closed
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8109 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Finished server process [27802]
+/home/yaman/Masaüstü/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:94: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/yaman/Masaüstü/ocpp1.6_mini_simulator/ocpp_client/backend/main.py:116: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [29665]
+INFO:     Waiting for application startup.
+INFO:     Connecting to wss://localhost:8080/VESTEL-EVC-009 ...
+INFO:     WebSocket connected
+INFO:     BootNotification sent
+WARNING:  Connection closed
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://0.0.0.0:8109 (Press CTRL+C to quit)
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [29665]
